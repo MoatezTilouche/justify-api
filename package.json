@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx src/server.ts",
-    "build": "tsc",
-    "start": "node dist/src/server.js",
-    "test": "jest --coverage"
+  "dev": "tsx src/server.ts",
+  "build": "tsc",
+  "render-build": "npm ci --include=dev && npm run build",
+  "start": "node dist/src/server.js",
+  "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",
