@@ -147,3 +147,64 @@ PRs bienvenues. Ouvrez une issue avant les grosses modifications architecturales
 
 ---
 
+## 🧾 Exemple d'API — test en ligne
+
+Ci‑dessous des exemples pour obtenir un token et appeler l'endpoint `/api/justify`.
+
+Remplacez `https://justify-api-i6ib.onrender.com` par l'URL de votre déploiement Render (ou `http://localhost:3000` si vous testez localement).
+
+1. Obtenir un token (POST /api/token)
+
+curl (Linux/macOS):
+
+```bash
+curl -sS -X POST https://justify-api-i6ib.onrender.com/api/token \
+  -H "Content-Type: application/json" \
+  -d '{"email":"alice@example.com"}'
+```
+
+PowerShell (Windows):
+
+```powershell
+Invoke-RestMethod -Uri https://justify-api-i6ib.onrender.com/api/token -Method POST -ContentType 'application/json' -Body '{"email":"alice@example.com"}'
+```
+
+Réponse attendue (exemple):
+
+```json
+{ "token": "<votre-token-hex>" }
+```
+
+2. Appeler /api/justify (POST texte brut)
+
+curl (Linux/macOS):
+
+```bash
+curl -sS -X POST https://justify-api-i6ib.onrender.com/api/justify \
+  -H "Content-Type: text/plain" \
+  -H "Authorization: Bearer <votre-token-hex>" \
+  --data-binary $'This    is   a   sample   paragraph   to   justify.\n\nSecond paragraph.'
+```
+
+PowerShell (Windows):
+
+```powershell
+$text = "This    is   a   sample   paragraph   to   justify.`n`nSecond paragraph."
+Invoke-RestMethod -Uri https://justify-api-i6ib.onrender.com/api/justify -Method POST -ContentType 'text/plain' -Body $text -Headers @{ Authorization = 'Bearer <votre-token-hex>' }
+```
+
+httpie (nice interactive alternative):
+
+```bash
+http POST https://justify-api-i6ib.onrender.com/api/justify "Authorization:Bearer <votre-token-hex>" Content-Type:text/plain <<< $'Some text to justify'
+```
+
+Réponse: le texte justifié en `text/plain` (pas de JSON) — il est renvoyé directement.
+
+---
+
+## 🧑‍💻 Auteur
+
+Ce projet a été développé par **Moatez Tilouche** — retrouvez-le sur LinkedIn :
+
+[Moatez Tilouche](https://www.linkedin.com/in/moatez-tilouch/)
