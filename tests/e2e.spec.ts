@@ -38,7 +38,7 @@ describe("API Endpoints", () => {
     expect(res.body.token).toBeDefined();
   });
 
-  it("should justify text with a valid token", async () => {
+  it("should justify text with valid token", async () => {
     const token = "tokentest";
     Storage.addToken("user@test.com", token);
     const res = await request(app)
