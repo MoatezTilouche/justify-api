@@ -147,10 +147,3 @@ PRs bienvenues. Ouvrez une issue avant les grosses modifications architecturales
 
 ---
 
-Si vous voulez, je peux :
-
-- ajouter un `README.md` en anglais en plus du français,
-- pousser ces changements pour vous, ou
-- parcourir ensemble la config Render et déployer maintenant.
-
-Dites-moi ce que vous voulez que je fasse en suite. 🎯
