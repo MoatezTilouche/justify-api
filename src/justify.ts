@@ -7,7 +7,7 @@ function normalizeSpaces(input: string): string {
 }
 
 function justifyLine(words: string[], width: number): string {
-  if (words.length === 1) return words[0]!;
+  if (words.length === 1) return words[0]!.padEnd(width, " ");
   const totalChars = words.reduce((sum, w) => sum + w.length, 0);
   const totalSpaces = width - totalChars;
   const gaps = words.length - 1;
@@ -49,7 +49,12 @@ export function justifyParagraph(paragraph: string, width = LINE_WIDTH): string 
     }
   }
   if (lineWords.length > 0) lines.push(lineWords.join(" "));
-  return lines.join("\n");
+
+  // Last line of a paragraph should be left-aligned (single spaces, no padding)
+  if (lines.length === 0) return "";
+  if (lines.length === 1) return lines[0]!.trimEnd();
+  const lastLine = lines.pop()!;
+  return lines.join("\n") + "\n" + lastLine;
 }
 
 export function justifyText(input: string, width = LINE_WIDTH): string {
