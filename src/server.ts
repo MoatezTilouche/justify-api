@@ -2,10 +2,10 @@ import express from "express";
 import crypto from "crypto";
 import helmet from "helmet";
 import morgan from "morgan";
-import { justifyText, LINE_WIDTH } from "./justify.js";
-import { Storage } from "./storage.js";
-import { authMiddleware } from "./middleware.js";
-import { yyyymmddUTC } from "./utils/date.js";
+import { justifyText, LINE_WIDTH } from "./justify";
+import { Storage } from "./storage";
+import { authMiddleware } from "./middleware";
+import { yyyymmddUTC } from "./utils/date";
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 const DAILY_LIMIT = 80000;

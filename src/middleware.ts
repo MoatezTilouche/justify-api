@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { Storage } from "./storage.js";
+import { Storage } from "./storage";
 
 export function authMiddleware(req: Request, res: Response, next: NextFunction) {
   const token = req.header("Authorization")?.replace(/^Bearer\s+/, "");
